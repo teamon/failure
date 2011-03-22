@@ -9,7 +9,7 @@ end
 
 
 def rand(n = 1)
-  (SecureRandom.random_number * n).to_i
+  SecureRandom.random_number(n)
 end
 
 def exprnd(l)
