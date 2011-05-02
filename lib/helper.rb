@@ -1,5 +1,5 @@
 def print_usage
-  puts "Usage: gen.rb TIME K K_MAX"
+  puts "Usage: gen.rb TIME K K_MAX K_MIN ALGORITHM"
   exit 1
 end
 
@@ -10,8 +10,8 @@ def print_header(mag)
   puts "-" * (17+mag.size*5)
 end
 
-def print_time_and_mag(time, mag)
+def print_time_and_mag time, mag, profit
   print "% 15f | " % time
   mag.each {|e| print "% 4d " % e }
-  puts
+  puts " | #{profit}"
 end
