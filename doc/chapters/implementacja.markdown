@@ -1,62 +1,54 @@
-# Implementacja
+# Implementacja generatora
 
-W celu uproszczenia operacji na pliku wave po wczytaniu go do pamięci
-zdefiniowana została następująca struktura, a przy jej pomocy typ.
+Generator symulujący składanie zamówień przez klientów sklepu został napisany w
+języku Ruby.
 
-    typedef struct wave wave_t;
-    struct wave {
-        char *data;
-        int length;
-        int channels;
-        int samplerate;
-        int bits;
-    };
+Podczas wywołania generator przyjmuje następujące parametry
 
-Program składa się z następujących funkcji.
+* `TIME_MAX` -- czas symulacji
+* `K` -- ilość produktów dostępnych w sklepie
+* `K_MAX` -- początkowa ilość każdego z produktów
+* `K_MIN` -- parametry wykorzystywany przez strategie uzupełniające
+* `ALGORITHM` -- wybrana strategia uzupełniająca
 
-    void usage(void);
-    int dsp_init(void);
-    int dsp_play(int fd, wave_t *data);
-    void dsp_close(int fd);
-    wave_t *wave_read(const char *filename);
-    void wave_free(wave_t *data);
-    wave_t *wave_mono(wave_t *data) __attribute__((optimize(0)));
-    wave_t *wave_reverse(wave_t *data) __attribute__((optimize(0)));
-    int main(int argc, char **argv);
+Na początku symulacji magazyn jest wypełniany `K` produktami po `K_MAX` każdego.
+Cena produktu jest równa jego numerowi (produkt nr 5 ma cenę równą 5).
+Czas symulacji jest ustawiany na wartość 0. Całkowity zysk sklepu jest również
+ustawiany na wartość 0.  Dopóki czas jest mniejszy od ustalonego czasu
+maksymalnego (`TIME_MAX`) wykonywane są następujące kroki
 
-Pominę opis funkcji `usage`, gdyż nie dzieje się tam nic interesującego z punktu
-widzenia laboratorium.
+* Losowana jest ilość czasu od poprzedniego zamówienia
+  (wartość losowa o rozkładzie wykładniczym),
+* Losowane są zamawiane produkty (od 1 do K),
+* Dla każdego z produktów sprawdzany jest stan magazynu,
+* Jeżeli w magazynie nie ma danego produktu zysk sklepu zostaje pomniejszony o
+  cenę produktu, w przeciwnym wypadku z magazynu zostaje usunięta jedna sztuka
+  danego produktu, a zysk sklepu zostaje powiększony o jego cenę.
+* Dla każdego produktu w magazynie sprawdzany jest warunek strategi
+  uzupełniającej. Jeżeli warunek jest prawdziwy następuje wywołanie funkcji
+  uzupełniającej. Po uzupełnieniu magazynu od całkowitego zysku sklepu
+  odejmowana jest wartość ilości uzupełnionych sztuk danego produktu pomnożona
+  przez cenę tego produktu.
 
-Funkcja `dsp_init` zwraca deskryptor pliku, który zostaje otrzymany po otwarciu
-`/dev/dsp`.
+Na wyjściu generator podaje stan magazynu po każdym zamówieniu jak i aktualny
+zysk sklepu. Ostateczną wartością zwracaną przez generator jest całkowity zysk
+sklepu po zakończeniu symulacji (po osiągnięciu czasu `TIME_MAX`).
 
-Funkcja `dsp_play` odtwarza przekazane jako parametr dane z pliku `wav`. W ten
-funkcji ustawione zostają parametry dźwięku takie jak liczba bitów,
-częstotliwość próbkowania oraz ilość kanałów. Po ustawieniu tych wartości za
-pomocą systemowego wywołania `ioctl` następuje zapis do danych dźwiękowych do
-urządzenia `/dev/dsp`. Ostatnie wywołanie funkcji `ioctl` rozpoczyna odtwarzanie
-dźwięku.
+## Strategie uzupełniania
 
-Funkcja `dsp_close` zdefiniowana została tylko dla kompletności API. W ciele tej
-funkcji uruchamiane jest wywołanie systemowe `close` i w razie błędu na
-standardowe wyjście błędów wypisywany jest odpowiedni komunikat.
+Zdefiniowane zostały trzy następujące strategie
 
-W funkcji `wave_read` tworzona jest instancja typu `wave_t`, do której
-wczytywane są dane z pliku, którego nazwa przekazana została jako parametr.
-Jeśli funkcja zwraca wartość `NULL` to z jakiegoś powodu wczytanie pliku się nie
-powiodło. W razie błędu stosowny komunikat jest wypisywany na standardowe
-wyjście błędów.
+* Strategia 0 -- uzupełnianie stanu magazynu do `K_MAX`, jeśli stan magazynu
+  jest mniejszy, bądź równy `K_MIN`,
+* Strategia 1 -- uzupełnienie stanu magazynu do wartości dwa razy większej niż
+  obecna, gdy w magazynie znajduje się mniej niż `K_MIN` procent z `K_MAX`
+  produktów w magazynie,
+* Strategia 2 -- uzupełnianie stanu magazynu do `K_MAX` co stały okres czasu
+  zdefiniowany za pomocą zmiennej `K_MIN`.
 
-Funkcja `wave_free` została zdefiniowana dla ułatwienia posługiwania się typem
-`wave_t`. Zostaje w niej zwolniony bufor danych PCM oraz pamięć zajmowana przez
-strukturę `wave`.
+## Generowanie wyników do analizy
 
-Funkcja `wave_mono` przekodowuje dźwięk stereo na dźwięk mono korzystając z
-MMX. Konwersja polega na obliczeniu średniej z próbek prawego i lewego kanału.
-
-Funkcja `wave_reverse` wykorzystuje MMX do odwrócenia kolejności próbek w taki
-sposób, aby dźwięk odtwarzany był od tyłu.
-
-W funkcji `main` wykorzystuje funkcję `getopt` do przetworzenia parametrów z
-linii komend oraz w zależności od nich wywołuje odpowiednie funkcje.
+W celu wygenerowania wyników napisany został skrypt w języku Ruby, który
+automatycznie wywołuje generator dla każdego z algorytmów uzupełniania oraz
+zadanych parametrów i wypisuje dane na ekranie.
 

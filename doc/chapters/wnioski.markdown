@@ -1,10 +1,17 @@
 # Wnioski
 
-Instrukcje typu SIMD zostały wprowadzone, aby umożliwić szybkie przetwarzanie
-multimediów takich jak dźwięk i obraz. Dzięki SIMD można uzyskać przyspieszenie
-podczas operacji na tablicach ze względu na fakt, że operacje przeprowadzane są
-wektorowo. Nie zawsze łatwo jest zapisać algorytm w taki sposób, aby można było
-korzystać z dobrodziejstw instrukcji SIMD. Wadą MMX jest fakt, że wykorzystuje
-rejestry FPU i nie można korzystać w tym samym czasie z jednostki
-zmiennoprzecinkowej oraz MMX.
+Celem analizy w programie SAS było określenie która ze strategii jest
+najodpowiedniejsza do naszego modelu symulatora. Po odczytaniu wyników
+otrzymanych w programie SAS, możemy śmiało stwierdzić, że najlepszą strategią,
+okazała się strategia numer jeden. Charakteryzuje się ona prawie idealnym
+dopasowaniem do rozkładu normalnego, przynosiła największe zyski oraz patrząc
+na histogram z zaznaczoną gęstością prawdopodobieństwa przynosiła mniej więcej
+równomierne zyski, bez obawy o ewentualny duży spadek. Nasz symulator
+zakładał straty podczas gdy nie posiadaliśmy danego produktu na sklepie.
+Strategia numer 1 okazała się idealnym rozwiązaniem, ponieważ uniknęliśmy
+dużych strat, co można zauważyć odczytując histogramy dla pozostałych
+strategii, w których otrzymany zysk nie znajduje się w konkretnym przedziale i
+jest wartością niewiadomą. Nasza wybrana strategia pozwala nam na oszacowanie
+ewentualnych zarobków, pozostałe strategie już nie, dlatego uważamy, że ona
+jest najodpowiedniejsza.
 
