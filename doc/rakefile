@@ -1,0 +1,73 @@
+#!/usr/bin/env ruby
+# set fileencoding=utf-8
+require 'rake/clean'
+require 'yaml'
+require 'erb'
+
+CLEAN.include Dir['tmp/*']
+CLOBBER.include Dir['main.pdf']
+
+task :default => [:config, :pandoc, :render, :pdf]
+
+desc 'Loads config file'
+task :config do
+  $config = YAML.load_file('config.yml')
+end
+
+desc 'Converts chapters to LaTeX'
+task :pandoc => [:config] do
+  $config['chapters'].each do |chapter|
+    filename = "#{chapter['name']}.#{chapter['filetype']}"
+    input = File.join('chapters', filename)
+    output = File.join('tmp', filename)
+
+    Dir.mkdir 'tmp' unless Dir.exists? 'tmp'
+    if chapter['filetype'] =~ /latex/
+      File.copy_stream input, output
+    else
+      sh "pandoc -p -f #{chapter['filetype']} -t latex -o #{output} #{input} 2>&1"
+    end
+  end
+end
+
+desc 'Renders LaTeX template'
+task :render => [:config] do
+  latex = $config['chapters'].map do |chapter|
+    filename = File.join('tmp', "#{chapter['name']}.#{chapter['filetype']}")
+    File.read(filename)
+  end.join("\n\n")
+
+  title = $config['document']['title']
+  encoding = $config['document']['encoding']
+  author = $config['document']['author']
+  language = $config['document']['language']
+  packages = $config['document']['packages']
+  toc = $config['document']['toc']
+  small = $config['document']['small']
+  info = $config['document']['info']
+
+  latex.gsub! /^\#\#\#\#(.*?)/, 'SUBSUBSECTION: \1'
+  latex.gsub! '\begin{enumerate}[1.]', '\begin{enumerate}'
+
+  template = ERB.new(File.read('template.tex'))
+
+  File.open(File.join('tmp', 'main.tex'), 'w') do |file|
+    file.write(template.result(binding))
+  end
+end
+
+desc 'Renders PDF using pdflatex'
+task :pdf do
+  files = File.join 'tmp', 'main.tex'
+  dir = Dir.getwd
+  2.times do
+    sh "pdflatex -output-directory=#{dir} #{files} 2>&1"
+  end
+
+  Dir['main.*'].each do |file|
+    next if file =~ /pdf/
+      File.unlink file
+  end
+end
+
+

@@ -1,0 +1,17 @@
+document:
+  title: "Model dla optymalizacji działania sklepu internetowego"
+  encoding: "utf8"
+  language: "polski"
+  author: ["Mateusz Lenik", "Tymon Tobolski", "Michał Wawryszczuk"]
+  small: "Prowadzący"
+  info: "Dr inż. Jacek Jarnicki"
+chapters:
+  - name: "wstep"
+    filetype: "markdown"
+  - name: "implementacja"
+    filetype: "markdown"
+  - name: "statystyka"
+    filetype: "markdown"
+  - name: "wnioski"
+    filetype: "markdown"
+

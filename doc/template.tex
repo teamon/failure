@@ -1,0 +1,53 @@
+\documentclass[wide,a4paper,12pt,titlepage]{mwart}
+\usepackage[<%= encoding %>]{inputenc}
+\usepackage{<%= language %>}
+<% if packages.is_a? Array %>
+  \usepackage{<%= packages.join ',' %>}
+<% elsif packages %>
+  \usepackage{<%= packages %>}
+<% end %>
+<% if title %>
+  \title{<%= title %>}
+  \makeatletter
+  \renewcommand{\maketitle}{
+  \begin{titlepage}
+    \begin{center}
+      \vspace*{3cm}
+      \LARGE \@title \par
+      \vspace{2cm}
+      \textit{\small Autorzy:}\par
+      \normalsize \@author\par \normalsize
+      \vspace{3cm}
+      \textit{\small <%= small %>}\par
+      <%= info %>
+      \vspace{2cm}
+      \par
+      Wydział Elektroniki\\  \par
+      \vspace{5cm}
+      \small \@date
+    \end{center}
+  \end{titlepage}
+  }
+  \makeatother
+<% end %>
+
+<% if author.is_a? Array %>
+  \author{<%= author.join '\\\\' %>}
+<% elsif author %>
+  \author{<%= author %>}
+<% end %>
+\date{\today}
+
+\setlength{\parindent}{0in}
+
+\begin{document}
+<% if title %>
+  \maketitle
+<% end %>
+<% if toc %>
+  \tableofcontents
+  \newpage
+<% end %>
+<%= latex %>
+\end{document}
+
