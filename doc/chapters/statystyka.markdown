@@ -80,21 +80,21 @@ Przechodzimy teraz do przedstawienia wyników analizy dla każdej strategii.
 
 \begin{figure}[hbtp]
   \begin{center}
-    \includegraphics[scale=1]{images/strategia0/centyle_normalne.png}
+    \includegraphics[scale=.5]{images/strategia0/centyle_normalne.png}
   \end{center}
   \caption{\label{centyle_normalne0}Strategia 0}
 \end{figure}
 
 \begin{figure}[hbtp]
   \begin{center}
-    \includegraphics[scale=1]{images/strategia1/centyle_normalne.png}
+    \includegraphics[scale=.5]{images/strategia1/centyle_normalne.png}
   \end{center}
   \caption{\label{centyle_normalne1}Strategia 1}
 \end{figure}
 
 \begin{figure}[hbtp]
   \begin{center}
-    \includegraphics[scale=1]{images/strategia2/centyle_normalne.png}
+    \includegraphics[scale=.5]{images/strategia2/centyle_normalne.png}
   \end{center}
   \caption{\label{centyle_normalne2}Strategia 2}
 \end{figure}
@@ -109,21 +109,21 @@ wykładniczego.
 
 \begin{figure}[hbtp]
   \begin{center}
-    \includegraphics[scale=1]{images/strategia0/centyle_wykladnicze.png}
+    \includegraphics[scale=.5]{images/strategia0/centyle_wykladnicze.png}
   \end{center}
   \caption{\label{centyle_wykladnicze0}Strategia 0}
 \end{figure}
 
 \begin{figure}[hbtp]
   \begin{center}
-    \includegraphics[scale=1]{images/strategia1/centyle_wykladnicze.png}
+    \includegraphics[scale=.5]{images/strategia1/centyle_wykladnicze.png}
   \end{center}
   \caption{\label{centyle_wykladnicze1}Strategia 1}
 \end{figure}
 
 \begin{figure}[hbtp]
   \begin{center}
-    \includegraphics[scale=1]{images/strategia2/centyle_wykladnicze.png}
+    \includegraphics[scale=.5]{images/strategia2/centyle_wykladnicze.png}
   \end{center}
   \caption{\label{centyle_wykladnicze2}Strategia 2}
 \end{figure}
@@ -143,21 +143,21 @@ stwierdzić, że dopasowanie nie jest wystarczające.
 
 \begin{figure}[hbtp]
   \begin{center}
-    \includegraphics[scale=1]{images/strategia0/centyle_weibulla.png}
+    \includegraphics[scale=.5]{images/strategia0/centyle_weibulla.png}
   \end{center}
   \caption{\label{centyle_weibulla0}Strategia 0}
 \end{figure}
 
 \begin{figure}[hbtp]
   \begin{center}
-    \includegraphics[scale=1]{images/strategia1/centyle_weibulla.png}
+    \includegraphics[scale=.5]{images/strategia1/centyle_weibulla.png}
   \end{center}
   \caption{\label{centyle_weibulla1}Strategia 1}
 \end{figure}
 
 \begin{figure}[hbtp]
   \begin{center}
-    \includegraphics[scale=1]{images/strategia2/centyle_weibulla.png}
+    \includegraphics[scale=.5]{images/strategia2/centyle_weibulla.png}
   \end{center}
   \caption{\label{centyle_weibulla2}Strategia 2}
 \end{figure}
@@ -173,21 +173,21 @@ możemy śmiało stwierdzić, że dopasowanie nie jest wystarczające.
 
 \begin{figure}[hbtp]
   \begin{center}
-    \includegraphics[scale=1]{images/strategia0/histogram.png}
+    \includegraphics[scale=.5]{images/strategia0/histogram.png}
   \end{center}
   \caption{\label{histogram0}Strategia 0}
 \end{figure}
 
 \begin{figure}[hbtp]
   \begin{center}
-    \includegraphics[scale=1]{images/strategia1/histogram.png}
+    \includegraphics[scale=.5]{images/strategia1/histogram.png}
   \end{center}
   \caption{\label{histogram1}Strategia 1}
 \end{figure}
 
 \begin{figure}[hbtp]
   \begin{center}
-    \includegraphics[scale=1]{images/strategia2/histogram.png}
+    \includegraphics[scale=.5]{images/strategia2/histogram.png}
   \end{center}
   \caption{\label{histogram2}Strategia 2}
 \end{figure}
