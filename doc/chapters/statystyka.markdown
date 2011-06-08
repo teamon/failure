@@ -166,21 +166,21 @@ możemy śmiało stwierdzić, że dopasowanie nie jest wystarczające.
 
 \begin{figure}[hbtp]
   \begin{center}
-    \includegraphics[scale=.45]{images/strategia0/histogram.png}
+    \includegraphics[scale=.4]{images/strategia0/histogram.png}
   \end{center}
   \caption{\label{histogram0}Strategia 0}
 \end{figure}
 
 \begin{figure}[hbtp]
   \begin{center}
-    \includegraphics[scale=.45]{images/strategia1/histogram.png}
+    \includegraphics[scale=.4]{images/strategia1/histogram.png}
   \end{center}
   \caption{\label{histogram1}Strategia 1}
 \end{figure}
 
 \begin{figure}[hbtp]
   \begin{center}
-    \includegraphics[scale=.45]{images/strategia2/histogram.png}
+    \includegraphics[scale=.4]{images/strategia2/histogram.png}
   \end{center}
   \caption{\label{histogram2}Strategia 2}
 \end{figure}
