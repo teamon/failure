@@ -1,7 +1,7 @@
 # Analiza otrzymanych wyników w programie SAS
 
 Otrzymane wyniki symulacji zostały zapisane kolejno w plikach `strategia0.txt`,
-`strategia1.txt` oraz `strategia2.txt`. Zawierają one zarobek sklepu
+`strategia1.` `txt` oraz `strategia2.txt`. Zawierają one zarobek sklepu
 internetowego, zarejestrowany po określonym czasie. Ważnym faktem jest to, że
 symulacja każdej strategii przyniosła rożne rezultaty.
 
@@ -31,7 +31,7 @@ innych, w celu różnorodnego rozpatrzenia przedstawionego problemu. Dzięki
 programie SAS potrafimy stwierdzić, która strategia jest najodpowiedniejsza i
 przynosi największe zyski oraz największa wydajność systemu.
 
-Poniżej przestawiam kod skryptu `analiza.sas`.
+Poniżej znajduje się kod skryptu `analiza.sas`.
 
     data results err_log;
 
@@ -59,7 +59,8 @@ Poniżej przestawiam kod skryptu `analiza.sas`.
 
     title 'Histogram';
     proc capability data = results noprint;
-    histogram / weibull(color=green w=2) normal(color=yellow w=2) exponential(color = red w=2);
+    histogram / weibull(color=green w=2) normal(color=yellow w=2)
+        exponential(color = red w=2);
 
     run;
 
@@ -191,7 +192,7 @@ rozkład wykładniczy, ponieważ w żaden sposób nie odzwierciedla on
 przybliżonego dopasowania. Zostało nam rozstrzygnięcie kwestii czy wybrać
 rozkład Weibulla lub rozkład normalny. Opierając się na wykresach
 probabilistycznych przedstawionych wcześniej, zdecydowaliśmy się, że
-najlepszym dopasowanie jest rozkład normalny. Mimo tego, że w strategii numer
+najlepszym dopasowaniem jest rozkład normalny. Mimo tego, że w strategii numer
 0, w niektórych miejscach znacząco odbiegał od idealnego dopasowania, to w
 strategiach 1 i 2 dopasowanie było niemal idealne. Rozkład Weibulla w żadnym z
 przypadków nie był tak blisko dopasowania jak rozkład normalny.

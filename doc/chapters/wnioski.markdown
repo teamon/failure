@@ -6,12 +6,12 @@ otrzymanych w programie SAS, możemy śmiało stwierdzić, że najlepszą strate
 okazała się strategia numer jeden. Charakteryzuje się ona prawie idealnym
 dopasowaniem do rozkładu normalnego, przynosiła największe zyski oraz patrząc
 na histogram z zaznaczoną gęstością prawdopodobieństwa przynosiła mniej więcej
-równomierne zyski, bez obawy o ewentualny duży spadek. Nasz symulator
+równomierne zyski, bez obawy o ewentualny duży spadek. Symulator
 zakładał straty podczas gdy nie posiadaliśmy danego produktu na sklepie.
 Strategia numer 1 okazała się idealnym rozwiązaniem, ponieważ uniknęliśmy
 dużych strat, co można zauważyć odczytując histogramy dla pozostałych
-strategii, w których otrzymany zysk nie znajduje się w konkretnym przedziale i
-jest wartością niewiadomą. Nasza wybrana strategia pozwala nam na oszacowanie
+strategii, w których otrzymany zysk nie znajduje się w konkretnym przedziale
+i jest wartością niewiadomą. Nasza wybrana strategia pozwala nam na oszacowanie
 ewentualnych zarobków, pozostałe strategie już nie, dlatego uważamy, że ona
 jest najodpowiedniejsza.
 
