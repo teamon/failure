@@ -150,19 +150,12 @@ stwierdzić, że dopasowanie nie jest wystarczające.
 
 \begin{figure}[hbtp]
   \begin{center}
-    \includegraphics[scale=.5]{images/strategia1/centyle_weibulla.png}
-  \end{center}
-  \caption{\label{centyle_weibulla1}Strategia 1}
-\end{figure}
-
-\begin{figure}[hbtp]
-  \begin{center}
     \includegraphics[scale=.5]{images/strategia2/centyle_weibulla.png}
   \end{center}
   \caption{\label{centyle_weibulla2}Strategia 2}
 \end{figure}
 
-Na wykresach \ref{centyle_weibulla0}, \ref{centyle_weibulla1} oraz
+Na wykresach \ref{centyle_weibulla0}} oraz
 \ref{centyle_weibulla2} znajduje się dopasowanie wyników do rozkładu Weibulla.
 
 Ważnym faktem, jest to, że dla strategii numer jeden, program SAS nie
